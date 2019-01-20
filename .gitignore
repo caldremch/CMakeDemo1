@@ -10,3 +10,5 @@ config.h
 *.idea
 CTest*
 Test*
+CPACK*
+demo*

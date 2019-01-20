@@ -1,14 +1,18 @@
 cmake_minimum_required(VERSION 3.7)
-
-project(demo)
-
 #分边指定当前的项目的主版本号和副版本号
 set(demo_VERSION_MAJOR 1)
 set(demo_VERSION_MINOR 0)
 
+
 set(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
+project(demo)
+
+
+
+
 
 #启动测试
 enable_testing()
@@ -73,3 +77,11 @@ add_executable(demo ${SOURCE_FILES})
 target_link_libraries(demo ${EXTRA_LIBS})
 
 
+
+# 构建一个 CPack 安装包
+include (InstallRequiredSystemLibraries)
+set (CPACK_RESOURCE_FILE_LICENSE
+        "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+set (CPACK_PACKAGE_VERSION_MAJOR "${demo_VERSION_MAJOR}")
+set (CPACK_PACKAGE_VERSION_MINOR "${demo_VERSION_MINOR}")
+include (CPack)

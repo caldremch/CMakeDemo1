@@ -8,4 +8,5 @@ config.h
 *Makefile
 *.a
 *.idea
-
+CTest*
+Test*
